@@ -1,4 +1,6 @@
+from __future__ import annotations
 import random as rand
+
 
 class MusicPlayer:
     count = 0
@@ -102,3 +104,11 @@ class TypeHintedMusicPlayer:
         else:
             # Otherwise, play the song
             print(f"Now playing {song}!")
+
+    def get_shared_songs(self, other_player: TypeHintedMusicPlayer) -> list[str]:
+        overlapping = []
+        for song in self.library:
+            if song in other_player.library:
+                overlapping.append(song)
+
+        return overlapping
