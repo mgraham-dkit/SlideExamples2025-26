@@ -12,7 +12,7 @@ def guessing_game(min_limit: int, max_limit: int, guess_limit: int) -> bool:
             guess = int(input(f"Please guess a number between {min_limit} and {max_limit}: "))
         except ValueError as e:
             print(f"An error occurred: {e.__class__.__name__}")
-            print("Please enter a number as your guess")
+            print("Please enter a number using only digits")
             print()
             continue
 
