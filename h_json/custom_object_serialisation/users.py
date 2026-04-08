@@ -43,12 +43,18 @@ class User:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "type": self.__class__.__name__,
             "name": self.name,
             "age": self._age
         }
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> Self:
+        if data["type"] != cls.__name__:
+            raise ValueError(
+                    f"Invalid type value ({data["type"]}) within dict "
+                    f"- {cls.__name__} cannot deserialise data")
+
         return cls(data["name"], data["age"])
 
 
